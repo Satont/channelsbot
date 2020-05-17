@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   const guilds = client.guilds.cache.map(guild => ({
     name: guild.name,
     id: guild.id,
-    members: guild.members.cache.size,
+    members: guild.memberCount,
     channels: guild.channels.cache.size,
     region: guild.region,
   }))
