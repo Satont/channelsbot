@@ -11,6 +11,11 @@ export default {
   async run(msg) {
     const mentioned = msg.mentions.members.filter(member => member.id !== msg.client.user.id).first()
     if (!mentioned) return msg.reply(msg.guild.lang.get('commands.kick.notMentioned'))
+
+    if (mentioned.permissions.has('MANAGE_GUILD') || mentioned.permissions.has('ADMINISTRATOR')) {
+      return msg.reply(msg.guild.lang.get('commands.kick.cannot', mentioned))
+    }
+
     if (mentioned.voice.channel.id !== msg.member.voice.channel.id) return msg.reply(msg.guild.lang.get('commands.kick.notInYourChannel', mentioned))
 
     await mentioned.voice.setChannel(null)

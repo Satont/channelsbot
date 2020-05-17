@@ -15,6 +15,7 @@ export interface Command {
   permission?: BitFieldResolvable<PermissionString>
   checkCustomPerm?: (msg: Message) => boolean
   run: (msg: Message, content?: string) => Promise<any> | any
+  helper: (...args: any) => Promise<any> | any
   name: string
-  aliases?: string[]
+  aliases?: string[],
 }

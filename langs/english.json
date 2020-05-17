@@ -13,7 +13,8 @@
     "kick": {
       "notMentioned": "you should mention user you wants to kick.",
       "notInYourChannel": "user $0 not in your voice channel, you cannot kick him.",
-      "success": "user $0 was successfuly kicked from your channel."
+      "success": "user $0 was successfuly kicked from your channel.",
+      "cannot": "you can't kick $0."
     },
     "lang": {
       "notExist": "lang $0 not exist. Avaliable langs: russian|english",
