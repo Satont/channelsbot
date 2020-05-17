@@ -1,5 +1,11 @@
 require('dotenv').config()
 import 'source-map-support/register'
+import * as Sentry from '@sentry/node'
+
+if (process.env.SENTRY_DSN && process.env.SENTRY_DSN !== '') {
+	Sentry.init({ dsn: process.env.SENTRY_DNS })
+}
+
 import { Client, GuildMember, VoiceChannel } from 'discord.js'
 import db from './db'
 import './http'
