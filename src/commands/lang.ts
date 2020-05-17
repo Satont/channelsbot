@@ -3,7 +3,7 @@ import { Lang } from '../langs'
 import db from '../db'
 
 export default {
-  name: 'list',
+  name: 'lang',
   aliases: ['список'],
   checkCustomPerm(msg) {
     return (msg.member.hasPermission('ADMINISTRATOR') || msg.member.hasPermission('MANAGE_GUILD'))
