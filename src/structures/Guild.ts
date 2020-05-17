@@ -1,4 +1,4 @@
-import { Structures, Client, Guild } from 'discord.js'
+import { Structures, Client, Guild as GuildType } from 'discord.js'
 import db from '../db'
 import { Lang } from '../langs'
 
@@ -7,7 +7,7 @@ export default Structures.extend('Guild', Guild => {
     lang: Lang
 
     private dbInstance
-    constructor(client: Client, data: Guild) {
+    constructor(client: Client, data: GuildType) {
       super(client, data);
       this.load()
     }

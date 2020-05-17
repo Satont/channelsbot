@@ -16,6 +16,7 @@ export class Lang {
     this.lang = JSON.parse(readFileSync(`${langsDir}/${lang}.json`, { encoding: 'UTF-8' }))
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   get(...args: any[]) {
     const path = args[0]
     const result = get(this.lang, path, null)
