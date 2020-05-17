@@ -1,0 +1,32 @@
+name: Node.js CI
+
+on: [push]
+
+jobs:
+  eslint:
+    name: Check ESLint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: install node v14
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14
+    - name: Install dependicies
+      run: npm install
+    - name: Run ESLint
+      run: npm run eslint
+  build: 
+    name: Build application
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: install node v14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Install dependicies
+        run: npm install
+      - name: Finally build
+        run: npm run build
+    
