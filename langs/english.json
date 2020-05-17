@@ -1,0 +1,26 @@
+{
+  "list": {
+    "empty": "current channel list is empty.",
+    "notEmpty": "current list of channels: $0"
+  },
+  "channel": {
+    "name": "Channel for $0",
+    "notFound": "this channel not found.",
+    "deleted": "channel $0 was deleted from list.",
+    "added": "channel $0 was added in list."
+  },
+  "commands": {
+    "kick": {
+      "notMentioned": "you should mention user you wants to kick.",
+      "notInYourChannel": "user $0 not in your voice channel, you cannot kick him.",
+      "success": "user $0 was successfuly kicked from your channel."
+    },
+    "lang": {
+      "notExist": "lang $0 not exist. Avaliable langs: russian|english",
+      "changed": "язык бота на данном сервере установлен на $0"
+    }
+  },
+  "errors": {
+    "langStringNotFound": "Translation for this string not found."
+  }
+}

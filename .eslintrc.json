@@ -1,0 +1,23 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "@typescript-eslint/camelcase": "off",
+    "semi": [0, "always"],
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/semi": [0],
+    "prefer-const": ["error", {
+      "destructuring": "all",
+      "ignoreReadBeforeAssign": false
+    }],
+    "no-var": 2
+  },
+  "parserOptions": {
+    "useJSXTextNode": true,
+    "project": [ "./tsconfig.json"],
+    "tsconfigRootDir": "./"
+  }
+}
