@@ -1,8 +1,12 @@
-import http from 'http'
+import express from 'express'
+//routes
+import guilds from './routes/guilds'
 
-http
-    .createServer((req, res) => {
-      res.writeHead(200)
-      res.end('Ok')
-    })
-    .listen(process.env.PORT && process.env.PORT !== '' ? process.env.PORT : 3000)
+
+const app = express()
+
+app.get('/', (req, res) => res.send('Ok'))
+
+app.use('/api/v1/guilds', guilds)
+
+app.listen(process.env.PORT && process.env.PORT !== '' ? process.env.PORT : 3000)
