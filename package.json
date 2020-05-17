@@ -1,6 +1,6 @@
 {
   "name": "channelsbot",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Bot for creating discord channels",
   "main": "app.js",
   "scripts": {
