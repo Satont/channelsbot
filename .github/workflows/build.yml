@@ -12,7 +12,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 14
-    - name: Install dependicies
+    - name: Install dependencies
       run: npm install
     - name: Run ESLint
       run: npm run eslint
@@ -25,7 +25,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      - name: Install dependicies
+      - name: Install dependencies
         run: npm install
       - name: Finally build
         run: npm run build
