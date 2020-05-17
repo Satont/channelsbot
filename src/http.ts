@@ -7,7 +7,7 @@ const app = express()
 
 app.get('/', (req, res) => res.send('Ok'))
 
-app.use('/guilds', guilds)
+app.use('/api/v1/guilds', guilds)
 
 app.listen(process.env.PORT && process.env.PORT !== '' ? process.env.PORT : 3000)
 
