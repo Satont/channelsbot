@@ -17,7 +17,7 @@
     },
     "lang": {
       "notExist": "lang $0 not exist. Avaliable langs: russian|english",
-      "changed": "язык бота на данном сервере установлен на $0"
+      "changed": "language of bot on this server setted to $0"
     }
   },
   "errors": {
