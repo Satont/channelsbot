@@ -22,7 +22,7 @@ export default async ({ type, member, newChannel, oldChannel }: Options) => {
     console.info(`${created.guild.name} | Channel ${created.name} created`)
   }
 
-  if ((type === 'leave' || type === 'switch') && createdChannels.includes(oldChannel.id) && oldChannel?.permissionOverwrites.some(perm => perm.type === 'member' && perm.id === member.id)) {
+  if ((type === 'leave' || type === 'switch') && createdChannels.includes(oldChannel?.id) && oldChannel?.permissionOverwrites.some(perm => perm.type === 'member' && perm.id === member.id)) {
     const index = createdChannels.indexOf(oldChannel.id)
     if (index) createdChannels.splice(index, 1)
     await db('created_channels').where({ channelId: oldChannel.id }).delete()
