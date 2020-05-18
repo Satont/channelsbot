@@ -12,7 +12,7 @@ export default {
     const mentioned = msg.mentions.members.filter(member => member.id !== msg.client.user.id).first()
     if (!mentioned) return msg.reply(msg.guild.lang.get('commands.kick.notMentioned'))
 
-    if (mentioned.permissions.has('MANAGE_GUILD') || mentioned.permissions.has('ADMINISTRATOR')) {
+    if (mentioned.permissions.has('MANAGE_GUILD') || mentioned.permissions.has('ADMINISTRATOR') || mentioned.permissions.has('MANAGE_ROLES')) {
       return msg.reply(msg.guild.lang.get('commands.kick.cannot', mentioned))
     }
 
