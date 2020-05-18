@@ -89,9 +89,10 @@ client.on('ready', async () => {
 	console.info(`Logged in as ${client.user.tag}`)
 	await initChannels()
 	await initGuilds()
+	import('./helpers/deleteEmptyChannels')
 	console.info(`Working on ${client.channels.cache.size} channels, ${client.guilds.cache.size} guilds, ${client.guilds.cache.map(g => g.name).join(', ')}`)
 })
 
-process.on('unhandledRejection', (reason) => {
-	console.error('Unhandled rejection', reason)
+process.on('unhandledRejection', (reason, promise) => {
+	console.error('Unhandled rejection', reason, promise)
 })
