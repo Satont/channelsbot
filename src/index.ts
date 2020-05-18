@@ -81,8 +81,8 @@ client.on('voiceChannelSwitch' as any, (member: GuildMember, oldChannel: VoiceCh
 })
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-client.on('voiceChannelLeave' as any, (member: GuildMember, newChannel: VoiceChannel) => {
-	handleVoiceEvent({ type: 'leave', member, newChannel })
+client.on('voiceChannelLeave' as any, (member: GuildMember, oldChannel: VoiceChannel) => {
+	handleVoiceEvent({ type: 'leave', member, oldChannel })
 })
 
 client.on('ready', async () => {
