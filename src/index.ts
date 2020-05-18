@@ -32,7 +32,8 @@ export const createdChannels = []
 
 client.on('message', async (msg) => {
 	if (msg.partial) await msg.fetch()
-	if (msg.member.partial) await msg.member.fetch()
+	if (msg.member?.partial) await msg.member?.fetch()
+	if (!msg.member) return;
 	if (msg.member.user.id === client.user.id) console.log(`<<< ${msg.guild.name} | ${client.user.tag}: ${msg.embeds.length ? '[embed]' : msg.content}`)
 	if (msg.member.user.bot || msg.channel.type === 'dm') return
 
