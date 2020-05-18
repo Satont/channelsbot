@@ -16,10 +16,15 @@ export default async ({ type, member, newChannel, oldChannel }: Options) => {
       MANAGE_CHANNELS: true
     })
 
-    await member.voice.setChannel(created)
-    createdChannels.push(created.id)
-    await db('created_channels').insert({ channelId: created.id })
-    console.info(`${created.guild.name} | Channel ${created.name} created`)
+    member.voice.setChannel(created)
+      .then(async () => {
+        createdChannels.push(created.id)
+        await db('created_channels').insert({ channelId: created.id })
+        console.info(`${created.guild.name} | Channel ${created.name} created`)
+      })
+      .catch(() => {
+        created.delete()
+      })
   }
 
   if ((type === 'leave' || type === 'switch') && createdChannels.includes(oldChannel?.id) && oldChannel?.permissionOverwrites.some(perm => perm.type === 'member' && perm.id === member.id)) {
