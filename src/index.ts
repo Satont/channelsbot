@@ -71,18 +71,18 @@ client.on('message', async (msg) => {
 })
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-client.on('voiceChannelJoin' as any, (member: GuildMember, channel: VoiceChannel) => {
-	handleVoiceEvent({ type: 'join', member, channel })
+client.on('voiceChannelJoin' as any, (member: GuildMember, newChannel: VoiceChannel) => {
+	handleVoiceEvent({ type: 'join', member, newChannel })
 })
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-client.on('voiceChannelSwitch' as any, (member: GuildMember, oldChannel: VoiceChannel, channel: VoiceChannel) => {
-	handleVoiceEvent({ type: 'join', member, channel })
+client.on('voiceChannelSwitch' as any, (member: GuildMember, oldChannel: VoiceChannel, newChannel: VoiceChannel) => {
+	handleVoiceEvent({ type: 'switch', member, oldChannel, newChannel })
 })
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-client.on('voiceChannelLeave' as any, (member: GuildMember, channel: VoiceChannel) => {
-	handleVoiceEvent({ type: 'leave', member, channel })
+client.on('voiceChannelLeave' as any, (member: GuildMember, newChannel: VoiceChannel) => {
+	handleVoiceEvent({ type: 'leave', member, newChannel })
 })
 
 client.on('ready', async () => {
