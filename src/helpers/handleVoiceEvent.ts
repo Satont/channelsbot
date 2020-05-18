@@ -3,7 +3,7 @@ import { channels, createdChannels } from '../index'
 import db from '../db'
 
 export default async ({ type, member, newChannel, oldChannel }: Options) => {
-  if ((type === 'join' || type === 'switch') && channels.includes(newChannel.id)) {
+  if ((type === 'join' || type === 'switch') && channels.includes(newChannel?.id)) {
     await member.fetch()
     const created = await newChannel.guild.channels
       .create(newChannel.guild.lang.get('channel.name', member.displayName), { 
