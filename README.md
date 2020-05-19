@@ -31,3 +31,5 @@ You setting channels for watching. When users join setted channel, then bot crea
 #### Important
   - Bot listen `kick` command only in the same category when he creating channels.
    `What is that mean? It's mean you should create text channel in the same category where your "create channel" exists.`
+   
+   ![](https://i.imgur.com/WfDVCdh.gif)
