@@ -20,7 +20,7 @@ export default async ({ type, member, newChannel, oldChannel }: Options) => {
       .then(async () => {
         createdChannels.push(created.id)
         await db('created_channels').insert({ channelId: created.id })
-        console.info(`${created.guild.name} | Channel ${created.name} created`)
+        console.info(`${created.guild.name}(${created.guild.id}) | Channel ${created.name} created`)
       })
       .catch(() => {
         created.delete()
@@ -31,8 +31,8 @@ export default async ({ type, member, newChannel, oldChannel }: Options) => {
     const index = createdChannels.indexOf(oldChannel.id)
     if (index) createdChannels.splice(index, 1)
     await db('created_channels').where({ channelId: oldChannel.id }).delete()
+    console.info(`${member.guild.name}(${member.guild.id}) | Channel ${oldChannel.name} deleted, because ${member.displayName} leaved.`)
     await oldChannel.delete()
-    console.info(`${member.guild.name} | Channel ${oldChannel.name} deleted, because ${member.displayName} leaved.`)
   }
 }
 
