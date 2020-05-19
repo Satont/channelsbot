@@ -4,7 +4,7 @@ import db from '../db'
 
 export default {
   name: 'lang',
-  aliases: ['список'],
+  aliases: ['язык'],
   checkCustomPerm(msg) {
     return (msg.member.hasPermission('ADMINISTRATOR') || msg.member.hasPermission('MANAGE_GUILD'))
   },
