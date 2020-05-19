@@ -38,7 +38,7 @@ client.on('message', async (msg) => {
 	if (msg.member.user.id === client.user.id) console.log(`<<< ${msg.guild.name} | ${client.user.tag}: ${msg.embeds.length ? '[embed]' : msg.content}`)
 	if (msg.member.user.bot || msg.channel.type === 'dm') return
 
-	const prefixRegex = new RegExp(`^<@!${client.user.id}>`)
+	const prefixRegex = new RegExp(`^<@!${client.user.id}>|cc!`)
 	const matchedPrefix = msg.content.match(prefixRegex)
 	if (!matchedPrefix) return
 	console.info(`>>> ${msg.guild.name} | ${msg.member.user.tag}: ${msg.embeds.length ? '[embed]' : msg.content}`)
