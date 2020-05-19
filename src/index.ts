@@ -16,6 +16,7 @@ import handleVoiceEvent from './helpers/handleVoiceEvent'
 import loadCommands from './structures/Client'
 import initGuilds from './helpers/initGuilds'
 import './commons/logUsage'
+import { Lang } from './langs'
 
 export const client = new Client({ 
 	partials: ['MESSAGE', 'GUILD_MEMBER'],
@@ -83,6 +84,18 @@ client.on('voiceChannelSwitch' as any, (member: GuildMember, oldChannel: VoiceCh
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 client.on('voiceChannelLeave' as any, (member: GuildMember, oldChannel: VoiceChannel) => {
 	handleVoiceEvent({ type: 'leave', member, oldChannel })
+})
+
+client.on('guildCreate', async (guild) => {
+	const lang = guild.region === 'russia' ? 'russian' : 'english'
+	guild.lang = new Lang(lang)
+  if (!(await db('settings').where({ guildId: guild.id }).first())) {
+		await db('settings').insert({ guildId: guild.id, lang })
+			.catch(e => console.error(`Error on insterting new guild ${guild.name}(${guild.id})`, e))
+		console.info(`Guild ${guild.name}(${guild.id}) was inserted in db! Guild lang: ${lang}`)
+	} else {
+		console.info(`Guild ${guild.name}(${guild.id}) already was in db, so we just reinitialize that guild. Guild lang: ${lang}`)
+	}
 })
 
 client.on('ready', async () => {
