@@ -7,10 +7,10 @@ export default async () => {
   for (const [id, guild] of client.guilds.cache) {
     let instance = await db('settings').where({ guildId: id }).first()
     if (!instance) {
-      instance = await db('settings').insert({ 
+      [instance] = await db('settings').insert({ 
         guildId: id,
         lang: guild.region === 'russia' ? 'russian' : 'english'
-      }).returning('*').first()
+      }).returning('*')
       newGuilds.push(guild.name)
     }
     guild.lang = new Lang(instance.lang)
