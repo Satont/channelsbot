@@ -10,7 +10,8 @@ router.get('/', (req, res) => {
     members: guild.memberCount,
     channels: guild.channels.cache.size,
     region: guild.region,
-    joined: guild.members.cache.get(client.user.id).joinedAt
+    joined: guild.members.cache.get(client.user.id).joinedAt,
+    lang: guild.lang.code,
   }))
 
   res.json(guilds)

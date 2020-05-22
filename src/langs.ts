@@ -10,9 +10,11 @@ const parameterizedString = (...args) => {
 const langsDir = resolve(process.cwd(), 'langs')
 
 export class Lang {
+  code: string
   lang: JSON
 
   constructor(lang = 'english') {
+    this.code = lang
     this.lang = JSON.parse(readFileSync(`${langsDir}/${lang}.json`, { encoding: 'UTF-8' }))
   }
 
