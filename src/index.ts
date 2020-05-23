@@ -39,11 +39,11 @@ client.on('message', async (msg) => {
 	if (msg.member.user.bot || msg.channel.type === 'dm') return
 
 	const prefixRegex = new RegExp(`^<@!${client.user.id}>|cc!`)
-	const matchedPrefix = msg.content.match(prefixRegex)
+	const matchedPrefix = msg.content.toLowerCase().match(prefixRegex)
 	if (!matchedPrefix) return
 	console.info(`>>> ${msg.guild.name}(${msg.guild.id}) | ${msg.member.user.tag}: ${msg.embeds.length ? '[embed]' : msg.content}`)
 
-	const message = msg.content.substring(matchedPrefix[0].length).trim()
+	const message = msg.content.toLowerCase().substring(matchedPrefix[0].length).trim()
 	const args = message.split(/ /)
 
 	const command = client.commands.find(command => command.name === args[0] || command.aliases?.includes(args[0]))
