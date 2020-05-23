@@ -1,5 +1,7 @@
 import sleep from './sleep'
 
+export const currentUsage: { ram: string; cpu: string } = { ram: '0MB', cpu: '0%' }
+
 const usage = async () => {
   const startedAt = Date.now()
   const start = process.cpuUsage()
@@ -15,6 +17,8 @@ const usage = async () => {
     arr.push(`${key}-${Math.round(memoryUsed[key] / 1024 / 1024 * 100) / 100}MB`)
   }
   console.log(`Cpu usage: ${cpuUsage.toFixed(2)}, Memory usage: ${arr.slice(0, 2).join(', ')}`)
+  currentUsage.cpu = cpuUsage.toFixed(2)
+  currentUsage.ram = arr[0].replace('rss-', '')
 }
 
 setInterval(() => {
