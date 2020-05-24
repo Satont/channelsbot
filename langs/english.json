@@ -1,4 +1,5 @@
 {
+  "localeCode": "en",
   "list": {
     "empty": "current channel list is empty.",
     "notEmpty": "current list of channels: $0"
@@ -19,6 +20,19 @@
     "lang": {
       "notExist": "lang $0 not exist. Avaliable langs: russian|english",
       "changed": "language of bot on this server setted to $0"
+    },
+    "info": {
+      "fields": {
+        "madeBy": "Made by",
+        "guilds": "Guilds",
+        "channelsForJoin": "Channels for join",
+        "createdChannels": "Created channels",
+        "botStats": {
+          "uptime": "Bot uptime",
+          "ram": "Ram usage",
+          "cpu": "Cpu usage"
+        }
+      }
     }
   },
   "errors": {

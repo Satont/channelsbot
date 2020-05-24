@@ -16,8 +16,9 @@ const usage = async () => {
   for (const key in memoryUsed) {
     arr.push(`${key}-${Math.round(memoryUsed[key] / 1024 / 1024 * 100) / 100}MB`)
   }
+
   console.log(`Cpu usage: ${cpuUsage.toFixed(2)}, Memory usage: ${arr.slice(0, 2).join(', ')}`)
-  currentUsage.cpu = cpuUsage.toFixed(2)
+  currentUsage.cpu = `${cpuUsage.toFixed(2)}%`
   currentUsage.ram = arr[0].replace('rss-', '')
 }
 

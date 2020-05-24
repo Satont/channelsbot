@@ -7,16 +7,17 @@ import { currentUsage } from '../commons/logUsage'
 export default {
   name: 'info',
   async run(msg) {
+    const locale = msg.guild.lang.get('localeCode')
     const embed = new MessageEmbed({
       thumbnail: { url: msg.client.user.avatarURL() },
       fields: [
-        { name: 'Mady by', value: '<@266632783336570880>', inline: true },
-        { name: 'Guilds', value: client.guilds.cache.size, inline: true },
-        { name: 'Channels for join', value: channels.length, inline: true },
-        { name: 'Current created channels', value: createdChannels.length, inline: true },
-        { name: 'Bot uptime', value: moment.duration(client.uptime).humanize(), inline: true },
-        { name: 'Ram usage', value: currentUsage.ram, inline: true },
-        { name: 'Cpu usage', value: currentUsage.cpu, inline: true },
+        { name: msg.guild.lang.get('commands.info.fields.madeBy'), value: '<@266632783336570880>', inline: true },
+        { name: msg.guild.lang.get('commands.info.fields.guilds'), value: client.guilds.cache.size, inline: true },
+        { name: msg.guild.lang.get('commands.info.fields.channelsForJoin'), value: channels.length, inline: true },
+        { name: msg.guild.lang.get('commands.info.fields.createdChannels'), value: createdChannels.length, inline: true },
+        { name: msg.guild.lang.get('commands.info.fields.botStats.uptime'), value: moment.duration(client.uptime).locale(locale).humanize(), inline: true },
+        { name: msg.guild.lang.get('commands.info.fields.botStats.ram'), value: currentUsage.ram, inline: true },
+        { name: msg.guild.lang.get('commands.info.fields.botStats.cpu'), value: currentUsage.cpu, inline: true },
       ],
       footer: { text: `https://channels-bot.tk` }
     })
