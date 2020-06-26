@@ -1,7 +1,11 @@
 import { client, channels } from '../index'
 import { CategoryChannel } from 'discord.js'
 
+let checkTimeout: NodeJS.Timeout = null
+
 const check = async () => {
+  clearTimeout(checkTimeout)
+  checkTimeout = setTimeout(() => check(), 5 * 60 * 1000)
   for (const [, guild] of client.guilds.cache) {
     for (const channelForJoin of channels) {
       const channel = guild.channels.cache.get(channelForJoin)
@@ -17,4 +21,4 @@ const check = async () => {
   }
 }
 
-setInterval(() => check(), 1 * 60 * 1000)
+check()
