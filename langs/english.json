@@ -33,6 +33,15 @@
           "cpu": "Cpu usage"
         }
       }
+    },
+    "help": {
+      "fields": {
+        "showMenu": "Show this menu",
+        "setLang": "Set lang",
+        "kickMember": "Kick user with channel",
+        "voiceList": "List of all registered channels",
+        "addChannel": "Add channel to list"
+      }
     }
   },
   "errors": {
