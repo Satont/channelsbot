@@ -18,3 +18,5 @@ export default {
     return
   }
 } as Command
+
+// test
