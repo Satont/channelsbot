@@ -3,6 +3,7 @@ import { MessageEmbed } from 'discord.js'
 
 export default {
   name: 'help',
+  aliases: ['помощь'],
   async run(msg) {
     const locale = msg.guild.lang.get('localeCode')
     const embed = new MessageEmbed({
