@@ -1,5 +1,4 @@
 import { Command } from '../typings/discord'
-import { channels, createdChannels, client } from '../index'
 import { MessageEmbed } from 'discord.js'
 
 export default {
