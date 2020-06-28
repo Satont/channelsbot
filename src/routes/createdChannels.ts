@@ -23,8 +23,8 @@ router.get('/', (req, res) => {
       },
       created: channel.createdAt,
       parent: {
-        id: channel.parent.id,
-        name: channel.parent.name,
+        id: channel?.parent.id,
+        name: channel?.parent.name,
       },
     }))
 

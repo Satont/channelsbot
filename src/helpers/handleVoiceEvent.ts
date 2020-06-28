@@ -1,30 +1,54 @@
 import { GuildMember, VoiceChannel } from 'discord.js'
 import { channels, createdChannels } from '../index'
 import db from '../db'
+import { PermissionOverwrites } from 'discord.js'
 
 export default async ({ type, member, newChannel, oldChannel }: Options) => {
   if ((type === 'join' || type === 'switch') && channels.includes(newChannel?.id)) {
     await member.fetch()
-    const created = await newChannel.guild.channels
-      .create(newChannel.guild.lang.get('channel.name', member.displayName), { 
-        parent: newChannel.parentID,
-        type: 'voice',
-        permissionOverwrites: newChannel.parent.permissionOverwrites,
-      })
-      
-    await created.updateOverwrite(member, {
-      MANAGE_CHANNELS: true
-    })
 
-    member.voice.setChannel(created)
-      .then(async () => {
-        createdChannels.push(created.id)
-        await db('created_channels').insert({ channelId: created.id })
-        console.info(`${created.guild.name}(${created.guild.id}) | Channel ${created.name} created`)
+    if(!newChannel.parent){
+      const created = await newChannel.guild.channels
+        .create(newChannel.guild.lang.get('channel.name', member.displayName), { 
+          parent: newChannel.parentID,
+          type: 'voice',
+        })
+        
+      await created.updateOverwrite(member, {
+        MANAGE_CHANNELS: true
       })
-      .catch(() => {
-        created.delete()
+
+      member.voice.setChannel(created)
+        .then(async () => {
+          createdChannels.push(created.id)
+          await db('created_channels').insert({ channelId: created.id })
+          console.info(`${created.guild.name}(${created.guild.id}) | Channel ${created.name} created`)
+        })
+        .catch(() => {
+          created.delete()
+        })
+    }else{
+      const created = await newChannel.guild.channels
+        .create(newChannel.guild.lang.get('channel.name', member.displayName), { 
+          parent: newChannel.parentID,
+          type: 'voice',
+          permissionOverwrites: newChannel.parent.permissionOverwrites,
+        })
+        
+      await created.updateOverwrite(member, {
+        MANAGE_CHANNELS: true
       })
+
+      member.voice.setChannel(created)
+        .then(async () => {
+          createdChannels.push(created.id)
+          await db('created_channels').insert({ channelId: created.id })
+          console.info(`${created.guild.name}(${created.guild.id}) | Channel ${created.name} created`)
+        })
+        .catch(() => {
+          created.delete()
+        })
+    }
   }
 
   if ((type === 'leave' || type === 'switch') && createdChannels.includes(oldChannel?.id) && oldChannel.members.size === 0) {

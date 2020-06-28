@@ -1,11 +1,9 @@
 import { Command } from '../typings/discord'
-import { channels, createdChannels, client } from '../index'
 import { MessageEmbed } from 'discord.js'
-import moment from 'moment'
-import { currentUsage } from '../commons/logUsage'
 
 export default {
   name: 'help',
+  aliases: ['помощь'],
   async run(msg) {
     const locale = msg.guild.lang.get('localeCode')
     const embed = new MessageEmbed({
