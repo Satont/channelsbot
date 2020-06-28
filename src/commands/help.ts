@@ -5,8 +5,7 @@ export default {
   name: 'help',
   aliases: ['помощь'],
   async run(msg) {
-    const locale = msg.guild.lang.get('localeCode')
-    const sum = msg.content
+    const sum = msg.content.split(' ')[0]
     const embed = new MessageEmbed({
       thumbnail: { url: msg.client.user.avatarURL() },
       fields: [
