@@ -7,7 +7,7 @@
   "channel": {
     "name": "Channel for $0",
     "notFound": "this channel not found.",
-    "noPerent": "Specified channel have't parent.",
+    "VoiceNoPerent": "Specified channel have't parent.",
     "deleted": "channel $0 was deleted from list.",
     "added": "channel $0 was added in list."
   },
