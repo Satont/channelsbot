@@ -57,6 +57,7 @@ client.on('message', async (msg) => {
 	const channel = msg.guild.channels.cache.get(message)
 
 	if (!channel) return msg.reply(msg.guild.lang.get('channel.notFound'))
+	if (!channel.parent) return msg.reply(msg.guild.lang.get('channel.noParent'))
 
 	const dbChannel = await db('channels').where('channelId', message).first()
 	if (dbChannel) {
