@@ -24,6 +24,9 @@ You setting channels for watching. When users join setted channel, then bot crea
     - Prints listened on join channels.
     - Initiator of command should has `Manage Channels` permission.
     - Example of usage: `cc!list`
+  - help 
+    - Prints help command.
+    - Example of usage: `cc!help`
   - 0123456789987654321
     - Will add that channel for listen list, if not exist. Otherwise bot will delete that channel from listen list!
     - Example of usage: `cc!0123456789987654321`
