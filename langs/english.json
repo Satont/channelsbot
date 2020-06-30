@@ -41,7 +41,8 @@
         "langSelector": "Set lang",
         "kickUser": "Kick member with channel",
         "listChannels": "List of all registered channels.",
-        "addChannel": "Add channel"
+        "addChannel": "Add channel",
+        "infoCommand": "Information about bot"
       }
     }
   },
