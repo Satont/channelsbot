@@ -46,29 +46,11 @@ client.on('message', async (msg) => {
 	const message = msg.content.toLowerCase().substring(matchedPrefix[0].length).trim()
 	const args = message.split(/ /)
 
-	const command = client.commands.find(command => command.name === args[0] || command.aliases?.includes(args[0]))
+	const command = client.commands.find(command => command.name === args[0] || command.aliases?.includes(args[0]) || command.regexp?.test(message))
 	if (command) {
 		if (typeof command.checkCustomPerm !== 'undefined' && !command.checkCustomPerm(msg)) return
 		if (typeof command.permission !== 'undefined' && !msg.member.hasPermission(command.permission)) return
 		await command.run(msg, args.slice(1).join(' '))
-		return
-	}
-
-	const channel = msg.guild.channels.cache.get(message)
-
-	if (!channel) return msg.reply(msg.guild.lang.get('channel.notFound'))
-	if (!channel.parent) return msg.reply(msg.guild.lang.get('channel.noParent'))
-
-	const dbChannel = await db('channels').where('channelId', message).first()
-	if (dbChannel) {
-		await db('channels').where('channelId', message).delete()
-		const index = channels.indexOf(message)
-		channels.splice(index, 1)
-		return msg.reply(msg.guild.lang.get('channel.deleted', channel.name))
-	} else {
-		await db('channels').insert({ channelId: message })
-		channels.push(message)
-		return msg.reply(msg.guild.lang.get('channel.added', channel.name))
 	}
 })
 
