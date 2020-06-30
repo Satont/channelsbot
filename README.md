@@ -27,6 +27,9 @@ You setting channels for watching. When users join setted channel, then bot crea
   - help 
     - Prints help command.
     - Example of usage: `cc!help`
+  - info 
+    - Prints information about bot.
+    - Example of usage: `cc!info`
   - 0123456789987654321
     - Will add that channel for listen list, if not exist. Otherwise bot will delete that channel from listen list!
     - Example of usage: `cc!0123456789987654321`
