@@ -6,6 +6,7 @@ import { currentUsage } from '../commons/logUsage'
 
 export default {
   name: 'info',
+  aliases: ['инфо'],
   async run(msg) {
     const locale = msg.guild.lang.get('localeCode')
     const embed = new MessageEmbed({
