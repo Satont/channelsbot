@@ -6,9 +6,8 @@ export default {
   regexp: /\d{9,}/,
   permission: 'MANAGE_CHANNELS',
   aliases: ['channel'],
-  async run(msg, content) {
-    if (content.split(' ').length > 1) content = content.split(' ')[1]
- 
+  async run(msg, args, content) {
+    content = args.length ? args[0] : content
     const channel = msg.guild.channels.cache.get(content)
 
     if (!channel) return msg.reply(msg.guild.lang.get('channel.notFound'))

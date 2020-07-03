@@ -50,7 +50,7 @@ client.on('message', async (msg) => {
 	if (command) {
 		if (typeof command.checkCustomPerm !== 'undefined' && !command.checkCustomPerm(msg)) return
 		if (typeof command.permission !== 'undefined' && !msg.member.hasPermission(command.permission)) return
-		await command.run(msg, args.slice(1).join(' '))
+		await command.run(msg, args.slice(1), message)
 	}
 })
 
