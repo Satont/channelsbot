@@ -14,25 +14,30 @@ You setting channels for watching. When users join setted channel, then bot crea
     - Changing bot language for current guild.
     - Initiator of command should has `Administrator` or `Manage guild` permission.
     - Currently avaliable langs: russian, english.
-    - Example of usage: `cc!lang russian`
+    - Example of usage: `cc!lang russian`.
+    - Aliases: `язык`.
  - kick 
     - Kicks user from voice channel.
     - Initiator of command should be admin in channel.
-    - Initiator of command should be in created by bot channel
-    - Example of usage: `cc!kick @user`
+    - Initiator of command should be in created by bot channel.
+    - Example of usage: `cc!kick @user`.
   - list 
     - Prints listened on join channels.
     - Initiator of command should has `Manage Channels` permission.
-    - Example of usage: `cc!list`
+    - Example of usage: `cc!list`.
+    - Aliases: `сс!список`.
   - help 
     - Prints help command.
-    - Example of usage: `cc!help`
+    - Example of usage: `cc!help`.
+    - Aliases: `cc!помощь, cc!commands, cc!menu, cc!команды, cc!меню`.
   - info 
     - Prints information about bot.
-    - Example of usage: `cc!info`
+    - Example of usage: `cc!info`.
+    - Aliases: `cc!инфо`.
   - 0123456789987654321
     - Will add that channel for listen list, if not exist. Otherwise bot will delete that channel from listen list!
-    - Example of usage: `cc!0123456789987654321`
+    - Example of usage: `cc!0123456789987654321`.
+    - Aliases: `cc!channel 0123456789987654321`.
 
 #### Important
   - Bot listen `kick` command only in the same category when he creating channels.

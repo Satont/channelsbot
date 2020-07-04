@@ -3,7 +3,7 @@ import { MessageEmbed } from 'discord.js'
 
 export default {
   name: 'help',
-  aliases: ['помощь'],
+  aliases: ['помощь', 'commands', 'menu', 'команды', 'меню'],
   async run(msg) {
     const commandName = msg.content.split(' ')[0]
     const embed = new MessageEmbed({
