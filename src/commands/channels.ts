@@ -4,9 +4,12 @@ import db from '../db'
 
 export default {
   regexp: /\d{9,}/,
-  permission: 'MANAGE_CHANNELS',
   aliases: ['channel'],
   async run(msg, args, content) {
+    if(!msg.member.permissions.has('MANAGE_CHANNELS')){
+      return msg.reply(msg.guild.lang.get('errors.noPermissions'))
+    }
+    
     content = args.length ? args[0] : content
     const channel = msg.guild.channels.cache.get(content)
 
