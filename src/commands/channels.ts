@@ -3,7 +3,7 @@ import { channels } from '../index'
 import db from '../db'
 
 export default {
-  regexp: /\d{9,}/,
+  regexp: /^\d{9,}/,
   permission: 'MANAGE_CHANNELS',
   aliases: ['channel'],
   async run(msg, args, content) {
