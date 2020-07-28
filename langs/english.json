@@ -47,6 +47,7 @@
     }
   },
   "errors": {
-    "langStringNotFound": "Translation for this string not found."
+    "langStringNotFound": "Translation for this string not found.",
+    "noPermissions": "you don't have permission `$0`, for use this command!"
   }
 }

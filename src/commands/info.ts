@@ -12,7 +12,7 @@ export default {
     const embed = new MessageEmbed({
       thumbnail: { url: msg.client.user.avatarURL() },
       fields: [
-        { name: msg.guild.lang.get('commands.info.fields.madeBy'), value: '<@266632783336570880>', inline: true },
+        { name: msg.guild.lang.get('commands.info.fields.madeBy'), value: '[Satont](https://satont.js.org)', inline: true },
         { name: msg.guild.lang.get('commands.info.fields.guilds'), value: client.guilds.cache.size, inline: true },
         { name: msg.guild.lang.get('commands.info.fields.channelsForJoin'), value: channels.length, inline: true },
         { name: msg.guild.lang.get('commands.info.fields.createdChannels'), value: createdChannels.length, inline: true },
