@@ -6,7 +6,7 @@ export default {
   checkCustomPerm(msg) {
     return msg.member.voice?.channel?.permissionOverwrites?.some(perm => perm.type === 'member' && perm.id === msg.member.id)
     && createdChannels.includes(msg.member.voice?.channel.id)
-    && msg.guild.channels.cache.get(msg.channel.id).parent.id === msg.member.voice?.channel?.parent.id
+    && msg.guild.channels.cache.get(msg.channel.id).parent.id === msg.member.voice?.channel?.parent.id // text channel should be in same category when created channel exists
   },
   async run(msg) {
     const mentioned = msg.mentions.members.filter(member => member.id !== msg.client.user.id).first()
