@@ -48,7 +48,6 @@
   },
   "errors": {
     "langStringNotFound": "Перевод для данной строки не найден.",
-    "noPermissions": "у тебя нету права `MANAGE_GUILD` или `ADMINISTRATOR`, чтобы использовать данную команду!",
-    "noLang": "ты не указал язык! Доступные языки: russian|english"
+    "noPermissions": "у тебя нет права `$0`, чтобы использовать данную команду!"
   }
 }

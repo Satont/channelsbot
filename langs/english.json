@@ -48,7 +48,6 @@
   },
   "errors": {
     "langStringNotFound": "Translation for this string not found.",
-    "noPermissions": "you don't have permission `MANAGE_GUILD` or `ADMINISTRATOR`, for use this commands!",
-    "noLang": "you did not specify a language! Avaliable langs: russian|english"
+    "noPermissions": "you don't have permission `$0`, for use this command!"
   }
 }

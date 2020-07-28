@@ -47,11 +47,13 @@ client.on('message', async (msg) => {
 	const args = message.split(/ /)
 
 	const command = client.commands.find(command => command.name === args[0] || command.aliases?.includes(args[0]) || command.regexp?.test(message))
-	if (command) {
-		if (typeof command.checkCustomPerm !== 'undefined' && !command.checkCustomPerm(msg)) return
-		if (typeof command.permission !== 'undefined' && !msg.member.hasPermission(command.permission)) return
-		await command.run(msg, args.slice(1), message)
-	}
+	if (!command) return;
+
+	const noPermission = msg.guild.lang.get('errors.noPermissions', command.permission ?? '')
+
+	if (typeof command.checkCustomPerm !== 'undefined' && !command.checkCustomPerm(msg)) return msg.reply(noPermission)
+	if (typeof command.permission !== 'undefined' && !msg.member.hasPermission(command.permission)) return msg.reply(noPermission)
+	await command.run(msg, args.slice(1), message)
 })
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
