@@ -9,6 +9,8 @@ That bot creating voice channels on your guild.
 
 You setting channels for watching. When users join setted channel, then bot creating voice channel in the same category with inherited permissions, moving user in created channel and give's admin permission (only on this channel) for user.
 
+Also, if you wan't add ability to manage bot for some user, you need create role with name *ChannelsBot* and add this role to user.
+
 #### Commands
   - lang 
     - Changing bot language for current guild.

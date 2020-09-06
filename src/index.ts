@@ -51,9 +51,10 @@ client.on('message', async (msg) => {
 
 	const noPermission = msg.guild.lang.get('errors.noPermissions', command.permission ?? '')
 
-	if (typeof command.checkCustomPerm !== 'undefined' && !command.checkCustomPerm(msg)) return msg.reply(noPermission)
-	if (typeof command.permission !== 'undefined' && !msg.member.hasPermission(command.permission)) return msg.reply(noPermission)
-	await command.run(msg, args.slice(1), message)
+	if (msg.member.roles.cache.some(r => r.name === 'ChannelsBot')) return await command.run(msg, args.slice(1), message)
+	else if (typeof command.checkCustomPerm !== 'undefined' && !command.checkCustomPerm(msg)) return msg.reply(noPermission)
+	else if (typeof command.permission !== 'undefined' && !msg.member.hasPermission(command.permission)) return msg.reply(noPermission)
+	else await command.run(msg, args.slice(1), message)
 })
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
