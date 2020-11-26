@@ -1,8 +1,8 @@
 import { Client, Collection, VoiceChannel } from 'discord.js'
 
 export function getCreatedChannels(this: Client) {
-  const channels: Collection<string, VoiceChannel> = this.channels.cache
-    .filter(channel => this.myCustomChannels.created.includes(channel.id) && channel.type === 'voice') as any
+  const channels = this.channels.cache
+    .filter(channel => this.myCustomChannels.created.includes(channel.id) && channel.type === 'voice') as Collection<string, VoiceChannel>
 
   return channels.map((channel: VoiceChannel) => ({
     name: channel.name,
