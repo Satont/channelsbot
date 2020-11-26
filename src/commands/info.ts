@@ -16,6 +16,7 @@ export default {
       thumbnail: { url: msg.client.user.avatarURL() },
       fields: [
         { name: msg.guild.lang.get('commands.info.fields.madeBy'), value: '[Satont](https://satont.js.org)', inline: true },
+        { name: 'Support', value: '[join](https://discord.gg/ufA744AVFd)', inline: true },
         { name: msg.guild.lang.get('commands.info.fields.guilds'), value: await client.shard.fetchClientValues('guilds.cache.size'), inline: true },
         { name: msg.guild.lang.get('commands.info.fields.shards'), value: client.shard.count, inline: true },
         { name: msg.guild.lang.get('commands.info.fields.channelsForJoin'), value: channels.forJoin, inline: true },
