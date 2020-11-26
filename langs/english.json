@@ -49,6 +49,7 @@
   },
   "errors": {
     "langStringNotFound": "Translation for this string not found.",
-    "noPermissions": "you don't have permission `$0`, for use this command!"
+    "noPermissions": "you don't have permission `$0`, for use this command!",
+    "botHasNoPermissionsForFeature": "seems like i'm haven't `$0` permissions for using this feuture. Please, add those permissions and try this command again."
   }
 }
