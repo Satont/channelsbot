@@ -1,5 +1,5 @@
 import express from 'express'
-//routes
+
 import guilds from './routes/guilds'
 import createdChannels from './routes/createdChannels'
 import channelsForJoin from './routes/channelsForJoin'

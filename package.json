@@ -9,7 +9,7 @@
     "dev": "nodemon",
     "build": "tsc",
     "prestart": "npm run migrate",
-    "start": "node dest/src/index",
+    "start": "node dest/src/shards",
     "eslint": "eslint --ext .ts src"
   },
   "author": "Satont <satontworldwide@gmail.com>",

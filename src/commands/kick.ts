@@ -1,11 +1,10 @@
 import { Command } from '../typings/discord'
-import { createdChannels } from '../index'
 
 export default {
   name: 'kick',
   checkCustomPerm(msg) {
     return msg.member.voice?.channel?.permissionOverwrites?.some(perm => perm.type === 'member' && perm.id === msg.member.id)
-    && createdChannels.includes(msg.member.voice?.channel.id)
+    && msg.client.myCustomChannels.created.includes(msg.member.voice?.channel.id)
     && msg.guild.channels.cache.get(msg.channel.id).parent.id === msg.member.voice?.channel?.parent.id // text channel should be in same category when created channel exists
   },
   async run(msg) {

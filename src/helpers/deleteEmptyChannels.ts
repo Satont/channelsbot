@@ -1,4 +1,4 @@
-import { client, channels } from '../index'
+import { client } from '../bot'
 import { CategoryChannel } from 'discord.js'
 
 let checkTimeout: NodeJS.Timeout = null
@@ -7,7 +7,7 @@ const check = async () => {
   clearTimeout(checkTimeout)
   checkTimeout = setTimeout(() => check(), 5 * 60 * 1000)
   for (const [, guild] of client.guilds.cache) {
-    for (const channelForJoin of channels) {
+    for (const channelForJoin of client.myCustomChannels.forJoin) {
       const channel = guild.channels.cache.get(channelForJoin)
       if (channel) {
         const parent = guild.channels.cache.get(channel.parent.id) as CategoryChannel

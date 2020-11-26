@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 require('dotenv').config()
 import 'source-map-support/register'
 import * as Sentry from '@sentry/node'
@@ -6,30 +7,31 @@ if (process.env.SENTRY_DSN && process.env.SENTRY_DSN !== '') {
 	Sentry.init({ dsn: process.env.SENTRY_DNS })
 }
 
-import { Client, GuildMember, VoiceChannel } from 'discord.js'
+import { Client, GuildMember, TextChannel, VoiceChannel } from 'discord.js'
 import db from './db'
-import './http'
 import initChannels from './helpers/initChannels'
-//import './structures/Guild'
 import logs from 'discord-logs'
 import handleVoiceEvent from './helpers/handleVoiceEvent'
 import loadCommands from './structures/Client'
 import initGuilds from './helpers/initGuilds'
-import './commons/logUsage'
 import { Lang } from './langs'
+import { getChannelsForJoin } from './functions/getChannelsForJoin'
+import { getCreatedChannels } from './functions/getCreatedChannels'
 
-export const client = new Client({ 
+export const client = new Client({
 	partials: ['MESSAGE', 'GUILD_MEMBER'],
 	ws: { intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES', 'GUILD_MEMBERS'] }
 })
+
+client.myCustomChannels = {
+  forJoin: [],
+  created: [],
+}
 
 logs(client).then(async () => {
 	await loadCommands(client)
 	client.login(process.env.DISCORD_TOKEN)
 })
-
-export const channels = []
-export const createdChannels = []
 
 client.on('message', async (msg) => {
 	if (msg.partial) await msg.fetch()
@@ -88,8 +90,16 @@ client.on('ready', async () => {
 	console.info(`Logged in as ${client.user.tag}`)
 	await initChannels()
 	await initGuilds()
-	import('./helpers/deleteEmptyChannels')
+  import('./helpers/deleteEmptyChannels')
 	console.info(`Working on ${client.channels.cache.size} channels, ${client.guilds.cache.size} guilds, ${client.guilds.cache.map(g => g.name).join(', ')}`)
+})
+
+client.on('error', (e) => {
+  console.error('Client error', e)
+})
+
+client.on('shardError', (e) => {
+  console.log('Shard error', e)
 })
 
 process.on('unhandledRejection', (reason, promise) => {

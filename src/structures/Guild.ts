@@ -11,11 +11,12 @@ export default Structures.extend('Guild', Guild => {
       super(client, data);
       this.load()
     }
+    
     private async load() {
       this.dbInstance = await db('settings').where({ guildId: this.id }).first()
       const guild = await this.fetch()
       if (!this.dbInstance) {
-        [this.dbInstance] = await db('settings').insert({ 
+        [this.dbInstance] = await db('settings').insert({
           guildId: this.id,
           lang: guild.region === 'russia' ? 'russian' : 'english'
         }).returning('*')

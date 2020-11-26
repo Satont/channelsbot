@@ -4,6 +4,10 @@ import { Collection, Message, BitFieldResolvable, PermissionString } from 'disco
 declare module 'discord.js' {
   interface Client {
     commands: Collection<string, Command>
+    myCustomChannels: {
+      forJoin: string[],
+      created: string[],
+    },
   }
   interface Guild {
     lang: Lang

@@ -1,5 +1,4 @@
 import { Command } from '../typings/discord'
-import { channels } from '../index'
 import db from '../db'
 
 export default {
@@ -12,16 +11,16 @@ export default {
 
     if (!channel) return msg.reply(msg.guild.lang.get('channel.notFound'))
     if (!channel.parent) return msg.reply(msg.guild.lang.get('channel.noParent'))
-  
+
     const dbChannel = await db('channels').where('channelId', content).first()
     if (dbChannel) {
       await db('channels').where('channelId', content).delete()
-      const index = channels.indexOf(content)
-      channels.splice(index, 1)
+      const index = msg.client.myCustomChannels.forJoin.indexOf(content)
+      msg.client.myCustomChannels.forJoin.splice(index, 1)
       return msg.reply(msg.guild.lang.get('channel.deleted', channel.name))
     } else {
       await db('channels').insert({ channelId: content })
-      channels.push(content)
+      msg.client.myCustomChannels.forJoin.push(content)
       return msg.reply(msg.guild.lang.get('channel.added', channel.name))
     }
   }

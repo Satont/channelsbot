@@ -26,6 +26,7 @@
       "fields": {
         "madeBy": "Разработал",
         "guilds": "Серверов",
+        "shards": "Шардов",
         "channelsForJoin": "Каналов для входа",
         "createdChannels": "Созданных каналов",
         "botStats": {

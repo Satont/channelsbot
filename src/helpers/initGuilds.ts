@@ -1,4 +1,4 @@
-import { client } from '../index'
+import { client } from '../bot'
 import db from '../db'
 import { Lang } from '../langs'
 
@@ -7,7 +7,7 @@ export default async () => {
   for (const [id, guild] of client.guilds.cache) {
     let instance = await db('settings').where({ guildId: id }).first()
     if (!instance) {
-      [instance] = await db('settings').insert({ 
+      [instance] = await db('settings').insert({
         guildId: id,
         lang: guild.region === 'russia' ? 'russian' : 'english'
       }).returning('*')

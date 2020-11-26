@@ -26,6 +26,7 @@
       "fields": {
         "madeBy": "Made by",
         "guilds": "Guilds",
+        "shards": "Shards",
         "channelsForJoin": "Channels for join",
         "createdChannels": "Created channels",
         "botStats": {
