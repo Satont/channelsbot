@@ -1,3 +1,4 @@
+import { PermissionString } from 'discord.js'
 import { Command } from '../typings/discord'
 
 export default {
@@ -13,6 +14,11 @@ export default {
 
     if (mentioned.permissions.has('MANAGE_GUILD') || mentioned.permissions.has('ADMINISTRATOR') || mentioned.permissions.has('MANAGE_ROLES')) {
       return msg.reply(msg.guild.lang.get('commands.kick.cannot', mentioned))
+    }
+    const bot = await msg.guild.members.fetch(msg.client.user)
+    const neededPerms: PermissionString[] = ['ADMINISTRATOR']
+    if (bot.permissions.missing(neededPerms).length) {
+      return msg.reply(msg.guild.lang.get('errors.botHasNoPermissionsForFeature', `${neededPerms.join(', ')}`))
     }
 
     if (mentioned.voice.channel.id !== msg.member.voice.channel.id) return msg.reply(msg.guild.lang.get('commands.kick.notInYourChannel', mentioned))
