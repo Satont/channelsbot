@@ -11,7 +11,7 @@ export default {
   async run(msg, args) {
     const lang = args[0]?.toLowerCase()
     if (!lang) {
-      return msg.reply(msg.guild.lang.get('commands.lang.current'))
+      return msg.reply(msg.guild.lang.get('commands.lang.current', msg.guild.lang.get('name')))
     }
 
     if (lang !== 'russian' && lang !== 'english') {
