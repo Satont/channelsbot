@@ -9,8 +9,14 @@ export default {
     return (msg.member.hasPermission('ADMINISTRATOR') || msg.member.hasPermission('MANAGE_GUILD'))
   },
   async run(msg, args) {
-    const lang = args[0]
-    if (lang !== 'russian' && lang !== 'english') return msg.reply(msg.guild.lang.get('commands.lang.notExist', lang))
+    const lang = args[0]?.toLowerCase()
+    if (!lang) {
+      return msg.reply(msg.guild.lang.get('command.lang.current'))
+    }
+
+    if (lang !== 'russian' && lang !== 'english') {
+      return msg.reply(msg.guild.lang.get('commands.lang.notExist', lang))
+    }
     
     await db('settings').where({ guildId: msg.guild.id}).update({ lang })
     msg.guild.lang = new Lang(lang)

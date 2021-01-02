@@ -1,5 +1,6 @@
 {
   "localeCode": "en",
+  "name": "English",
   "list": {
     "empty": "current channel list is empty.",
     "notEmpty": "current list of channels: $0"
@@ -20,7 +21,8 @@
     },
     "lang": {
       "notExist": "lang $0 not exist. Avaliable langs: russian|english",
-      "changed": "language of bot on this server setted to $0"
+      "changed": "language of bot on this server setted to $0",
+      "current": "current lang of bot is: $0"
     },
     "info": {
       "fields": {
