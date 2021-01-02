@@ -15,7 +15,7 @@ export class Lang {
 
   constructor(lang = 'english') {
     this.code = lang
-    this.lang = JSON.parse(readFileSync(`${langsDir}/${lang}.json`, { encoding: 'UTF-8' }))
+    this.lang = JSON.parse(readFileSync(`${langsDir}/${lang}.json`, { encoding: 'utf-8' }))
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
