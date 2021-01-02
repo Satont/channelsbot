@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-require('dotenv').config()
+import dotenv from 'dotenv'
+dotenv.config()
+
 import 'source-map-support/register'
 import * as Sentry from '@sentry/node'
 
@@ -7,7 +9,7 @@ if (process.env.SENTRY_DSN && process.env.SENTRY_DSN !== '') {
 	Sentry.init({ dsn: process.env.SENTRY_DNS })
 }
 
-import { Client, GuildMember, TextChannel, VoiceChannel } from 'discord.js'
+import { Client, GuildMember, VoiceChannel } from 'discord.js'
 import db from './db'
 import initChannels from './helpers/initChannels'
 import logs from 'discord-logs'
