@@ -3,3 +3,4 @@ node_modules
 db.json
 dest
 test.ts
+db.sqlite

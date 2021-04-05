@@ -1,26 +1,26 @@
-import { Command } from '../typings/discord'
-import { Lang } from '../langs'
-import db from '../db'
+import { Command } from '../typings/discord';
+import { Lang } from '../langs';
+import db from '../db';
 
 export default {
   name: 'lang',
   aliases: ['язык'],
   checkCustomPerm(msg) {
-    return (msg.member.hasPermission('ADMINISTRATOR') || msg.member.hasPermission('MANAGE_GUILD'))
+    return msg.member.hasPermission('ADMINISTRATOR') || msg.member.hasPermission('MANAGE_GUILD');
   },
   async run(msg, args) {
-    const lang = args[0]?.toLowerCase()
+    const lang = args[0]?.toLowerCase();
     if (!lang) {
-      return msg.reply(msg.guild.lang.get('commands.lang.current', msg.guild.lang.get('name')))
+      return msg.reply(msg.guild.lang.get('commands.lang.current', msg.guild.lang.get('name')));
     }
 
     if (lang !== 'russian' && lang !== 'english') {
-      return msg.reply(msg.guild.lang.get('commands.lang.notExist', lang))
+      return msg.reply(msg.guild.lang.get('commands.lang.notExist', lang));
     }
-    
-    await db('settings').where({ guildId: msg.guild.id}).update({ lang })
-    msg.guild.lang = new Lang(lang)
-    msg.reply(msg.guild.lang.get('commands.lang.changed', lang))
-    return
-  }
-} as Command
+
+    await db('settings').where({ guildId: msg.guild.id }).update({ lang });
+    msg.guild.lang = new Lang(lang);
+    msg.reply(msg.guild.lang.get('commands.lang.changed', lang));
+    return;
+  },
+} as Command;

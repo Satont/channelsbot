@@ -1,11 +1,11 @@
-import { Command } from '../typings/discord'
-import { MessageEmbed } from 'discord.js'
+import { Command } from '../typings/discord';
+import { MessageEmbed } from 'discord.js';
 
 export default {
   name: 'help',
   aliases: ['помощь', 'commands', 'menu', 'команды', 'меню'],
   async run(msg) {
-    const commandName = msg.content.split(' ')[0]
+    const commandName = msg.content.split(' ')[0];
     const embed = new MessageEmbed({
       thumbnail: { url: msg.client.user.avatarURL() },
       fields: [
@@ -16,9 +16,9 @@ export default {
         { name: 'cc!list', value: msg.guild.lang.get('commands.help.fields.listChannels'), inline: false },
         { name: 'cc!CHANNEL_ID', value: msg.guild.lang.get('commands.help.fields.addChannel'), inline: false },
       ],
-      footer: { text: `https://channels-bot.tk` }
-    })
+      footer: { text: `https://channels-bot.tk` },
+    });
 
-    msg.channel.send({ embed })
-  }
-} as Command
+    msg.channel.send({ embed });
+  },
+} as Command;

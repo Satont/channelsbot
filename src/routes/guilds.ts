@@ -1,8 +1,8 @@
-import { Router } from 'express'
-import { flattenDeep } from 'lodash'
-import { manager } from '../shards'
+import { Router } from 'express';
+import { flattenDeep } from 'lodash';
+import { manager } from '../shards';
 
-const router = Router()
+const router = Router();
 
 router.get('/', async (req, res) => {
   const guilds = await manager.broadcastEval(`
@@ -15,9 +15,9 @@ router.get('/', async (req, res) => {
       joined: guild.members.cache.get(this.user.id).joinedAt,
       lang: guild.lang.code,
     }))
-  `)
+  `);
 
-  res.json(flattenDeep(guilds))
-})
+  res.json(flattenDeep(guilds));
+});
 
-export default router
+export default router;

@@ -1,4 +1,4 @@
-import Knex from 'knex'
-import { production } from '../knexfile'
+import Knex from 'knex';
+import { production } from '../knexfile';
 
-export default Knex(production)
+export default Knex(production);

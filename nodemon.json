@@ -1,6 +1,6 @@
 {
   "watch": ["src"],
-  "exec": "npm run migrate && ts-node src/index.ts",
+  "exec": "npm run migrate && tsc && NODE_ENV=development npm start",
   "ext": "ts",
   "ignore": [
     "**/*.test.ts",
