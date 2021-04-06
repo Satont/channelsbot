@@ -12,32 +12,23 @@ if (process.env.SENTRY_DSN && process.env.SENTRY_DSN !== '') {
 import { Client, GuildMember, VoiceChannel } from 'discord.js';
 import db from './db';
 import initChannels from './helpers/initChannels';
-import logs from 'discord-logs';
 import handleVoiceEvent from './helpers/handleVoiceEvent';
-import loadCommands from './structures/Client';
+import { ChannelsBot } from './structures/Client';
 import initGuilds from './helpers/initGuilds';
 import { Lang } from './langs';
 import { getChannelsForJoin } from './functions/getChannelsForJoin';
 import { getCreatedChannels } from './functions/getCreatedChannels';
 
-export const client = new Client({
+export const client = new ChannelsBot({
   partials: ['MESSAGE', 'GUILD_MEMBER'],
   ws: { intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES', 'GUILD_MEMBERS'] },
 });
 
-client.myCustomChannels = {
-  forJoin: [],
-  created: [],
+export const clientSetup = async (c: any) => {
+  return c;
 };
 
-export const clientSetup = async () => {
-  await logs(client);
-  await loadCommands(client);
-
-  return client;
-};
-
-clientSetup().then(async () => {
+clientSetup(client).then(async () => {
   client.login(process.env.DISCORD_TOKEN);
 });
 

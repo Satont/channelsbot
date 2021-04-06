@@ -4,6 +4,7 @@
   "description": "Bot for creating discord channels",
   "main": "app.js",
   "scripts": {
+    "pretest": "rm db.sqlite; npm run migrate",
     "test": "jest",
     "migrate": "knex migrate:latest",
     "dev": "nodemon",

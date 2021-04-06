@@ -7,16 +7,16 @@ jobs:
     name: Check ESLint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: install node v14
-      uses: actions/setup-node@v1
-      with:
-        node-version: 14
-    - name: Install dependencies
-      run: npm install
-    - name: Run ESLint
-      run: npm run eslint
-  build: 
+      - uses: actions/checkout@master
+      - name: install node v14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm install
+      - name: Run ESLint
+        run: npm run eslint
+  build:
     name: Build application
     runs-on: ubuntu-latest
     steps:
@@ -27,6 +27,7 @@ jobs:
           node-version: 14
       - name: Install dependencies
         run: npm install
+      - name: Run tests
+        run: npm test
       - name: Finally build
         run: npm run build
-    

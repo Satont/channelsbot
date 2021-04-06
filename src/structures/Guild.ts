@@ -1,4 +1,4 @@
-import { Structures, Client, Guild as GuildType } from 'discord.js';
+import { Structures, Client } from 'discord.js';
 import db from '../db';
 import { Lang } from '../langs';
 
@@ -7,12 +7,12 @@ export default Structures.extend('Guild', (Guild) => {
     lang: Lang;
 
     private dbInstance;
-    constructor(client: Client, data: GuildType) {
+    constructor(client: Client, data: any) {
       super(client, data);
-      this.load();
+      this.load().then(() => this.loadLang());
     }
 
-    private async load() {
+    async load() {
       this.dbInstance = await db('settings').where({ guildId: this.id }).first();
       const guild = await this.fetch();
       if (!this.dbInstance) {
@@ -23,10 +23,10 @@ export default Structures.extend('Guild', (Guild) => {
           })
           .returning('*');
       }
-      await this.loadLang();
     }
-    async loadLang() {
-      this.lang = new Lang(this.dbInstance.lang);
+
+    loadLang(lang: 'russian' | 'english' = 'english') {
+      this.lang = new Lang(lang);
     }
   }
   return GuildLang;

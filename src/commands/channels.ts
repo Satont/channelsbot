@@ -12,13 +12,15 @@ export default {
 
     if (!channel) return msg.reply(msg.guild.lang.get('channel.notFound'));
     if (!channel.parent) return msg.reply(msg.guild.lang.get('channel.noParent'));
-    const bot = await msg.guild.members.fetch(msg.client.user);
+
+    const bot = msg.guild.members.cache.get(msg.client.user.id);
     const neededPerms: PermissionString[] = ['ADMINISTRATOR'];
     if (bot.permissions.missing(neededPerms).length) {
       return msg.reply(msg.guild.lang.get('errors.botHasNoPermissionsForFeature', `${neededPerms.join(', ')}`));
     }
 
     const dbChannel = await db('channels').where('channelId', content).first();
+
     if (dbChannel) {
       await db('channels').where('channelId', content).delete();
       const index = msg.client.myCustomChannels.forJoin.indexOf(content);
