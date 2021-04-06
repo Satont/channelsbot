@@ -51,6 +51,8 @@ describe('Basic tests', () => {
   });
 
   afterAll(() => {
-    client.destroy();
+    setTimeout(() => {
+      process.exit(0);
+    }, 20000);
   });
 });
